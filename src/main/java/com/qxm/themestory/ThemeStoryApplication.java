@@ -1,14 +1,14 @@
-package com.tencent.wxcloudrun;
+package com.qxm.themestory;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan(basePackages = {"com.tencent.wxcloudrun.dao"})
-public class WxCloudRunApplication {  
+@MapperScan(basePackages = {"com.qxm.themestory.dao"})
+public class ThemeStoryApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(WxCloudRunApplication.class, args);
+    SpringApplication.run(ThemeStoryApplication.class, args);
   }
 }
