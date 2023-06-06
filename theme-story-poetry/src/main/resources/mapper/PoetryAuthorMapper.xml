@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qxm.poetry.mapper.PoetryAuthorMapper">
+
+    <resultMap id="authorMapper" type="com.qxm.poetry.model.entity.PoetryAuthor">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="birthYear" column="birth_year"/>
+        <result property="deathYear" column="death_year"/>
+        <result property="desc" column="desc"/>
+        <result property="dynasty" column="dynasty"/>
+        <result property="baiduWiki" column="baidu_wiki"/>
+        <result property="status" column="status"/>
+        <result property="sort" column="sort"/>
+        <result property="worksCount" column="works_count"/>
+        <result property="createTime" column="create_time"/>
+        <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
+    <select id="selectPoetryAuthorPage" resultType="com.qxm.poetry.model.vo.PoetryAuthorVO">
+        select
+            pa.id,
+            pa.name,
+            pa.birth_year,
+            pa.death_year,
+            pa.`desc`,
+            pa.dynasty,
+            pa.baidu_wiki,
+            pa.status,
+            pa.sort,
+            pa.works_count
+        from
+            poetry_author as pa
+        <where>
+            <if test="ew.name != null and ew.name != ''">
+                and pa.name like concat('%', #{ew.name}, '%')
+            </if>
+            <if test="ew.startYear != null and ew.startYear != ''">
+                and (pa.birth_year >= #{ew.startYear} or pa.death_year >= #{ew.startYear})
+            </if>
+            <if test="ew.endYear != null and ew.endYear != ''">
+                and (pa.birth_year &lt;= #{ew.endYear} or pa.death_year &lt;= #{ew.endYear})
+            </if>
+            <if test="ew.dynasty != null and ew.dynasty != ''">
+                and pa.dynasty = #{dynasty}
+            </if>
+            <if test="ew.status != null">
+                and pa.status = #{status}
+            </if>
+            <if test="ew.minWorks != null">
+                and pa.works_count >= #{ew.minWorks}
+            </if>
+            <if test="ew.maxWorks != null">
+                and pa.works_count &lt;= #{ew.maxWorks}
+            </if>
+        </where>
+        order by
+            sort
+    </select>
+    <select id="selectPoetryAuthor" resultType="com.qxm.poetry.model.vo.PoetryAuthorVO">
+        select
+            pa.id,
+            pa.name,
+            pa.birth_year,
+            pa.death_year,
+            pa.`desc`,
+            pa.dynasty,
+            pa.baidu_wiki,
+            pa.status,
+            pa.sort,
+            pa.works_count
+        from
+            poetry_author as pa
+        where
+            pa.id = #{authorId}
+    </select>
+
+</mapper>

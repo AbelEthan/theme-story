@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qxm.poetry.mapper.PoetryImageMapper">
+
+    <resultMap id="authorMapper" type="com.qxm.poetry.model.entity.PoetryImage">
+        <id property="id" column="id"/>
+        <result property="url" column="url"/>
+        <result property="status" column="status"/>
+        <result property="open" column="open"/>
+        <result property="createTime" column="create_time"/>
+        <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
+    <select id="selectPoetryImagePage" resultType="com.qxm.poetry.model.vo.PoetryImageVO">
+        select
+            pi.id,
+            pi.url,
+            pi.status,
+            pi.open
+        from
+            poetry_image as pi
+        <where>
+            <if test="ew.status != null">
+                and pi.status = #{ew.status}
+            </if>
+            <if test="ew.open != null">
+                and pi.open = #{ew.open}
+            </if>
+        </where>
+        order by
+            sort
+    </select>
+    <select id="selectPoetryImage" resultType="com.qxm.poetry.model.vo.PoetryImageVO">
+        select
+            pi.id,
+            pi.url,
+            pi.status,
+            pi.open
+        from
+            poetry_image as pi
+        where
+            pi.id = #{authorId}
+    </select>
+
+</mapper>

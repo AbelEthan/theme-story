@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="theme-story-common" />
+        <module name="theme-story-starter" />
+        <module name="theme-story-poetry" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="theme-story" options="" />
+      <module name="theme-story-common" options="-parameters" />
+      <module name="theme-story-poetry" options="-parameters" />
+      <module name="theme-story-starter" options="-parameters" />
+    </option>
+  </component>
+</project>

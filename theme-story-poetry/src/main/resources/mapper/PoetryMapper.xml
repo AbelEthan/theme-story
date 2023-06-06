@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qxm.poetry.mapper.PoetryMapper">
+
+    <resultMap id="authorMapper" type="com.qxm.poetry.model.entity.Poetry">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="author" column="author"/>
+        <result property="prologue" column="prologue"/>
+        <result property="content" column="content"/>
+        <result property="dynasty" column="dynasty"/>
+        <result property="extend" column="extend"/>
+        <result property="tag" column="tag"/>
+    </resultMap>
+
+</mapper>
