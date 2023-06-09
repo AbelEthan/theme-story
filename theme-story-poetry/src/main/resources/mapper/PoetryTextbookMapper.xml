@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qxm.poetry.mapper.PoetryTextbookMapper">
+
+    <resultMap id="authorMapper" type="com.qxm.poetry.model.entity.PoetryTextbook">
+        <id property="id" column="id"/>
+        <result property="type" column="type"/>
+        <result property="name" column="name"/>
+        <result property="imageId" column="image_id"/>
+        <result property="content" column="content"/>
+        <result property="baiduWiki" column="baidu_wiki"/>
+        <result property="status" column="status"/>
+        <result property="sort" column="sort"/>
+        <result property="createTime" column="create_time"/>
+        <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+    <select id="selectPoetryTextbook" resultType="com.qxm.poetry.model.vo.PoetryTextbookVO">
+        select
+            pt.id,
+            pt.type,
+            pt.name,
+            pt.image_id,
+            pi.url as imageUrl,
+            pt.content,
+            pt.baidu_wiki,
+            pt.status,
+            pt.sort
+        from
+            poetry_textbook as pt
+            left join poetry_image as pi on pt.image_id = pi.id
+        where
+            pt.id = #{textbookId}
+    </select>
+
+</mapper>

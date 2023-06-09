@@ -3,7 +3,6 @@ package com.qxm.poetry.web;
 import com.qxm.common.model.ApiResponse;
 import com.qxm.poetry.service.PoetryAuthorService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +26,7 @@ public class PoetryAuthorController {
 
     final PoetryAuthorService poetryAuthorService;
 
-    public PoetryAuthorController(@Autowired PoetryAuthorService poetryAuthorService) {
+    public PoetryAuthorController(PoetryAuthorService poetryAuthorService) {
         this.poetryAuthorService = poetryAuthorService;
     }
 

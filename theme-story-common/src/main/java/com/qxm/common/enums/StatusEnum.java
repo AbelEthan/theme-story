@@ -5,7 +5,7 @@ package com.qxm.common.enums;
  * @Author: AbelEthan
  * @Email AbelEthan@126.com
  * @Date 2023/5/31 17:30
- * @Describes 朝代枚举
+ * @Describes 状态枚举
  */
 public enum StatusEnum implements IBaseEnum {
 

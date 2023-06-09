@@ -11,13 +11,12 @@ import com.qxm.poetry.mapper.PoetryAuthorMapper;
 import com.qxm.poetry.model.entity.PoetryAuthor;
 import com.qxm.poetry.model.vo.PoetryAuthorVO;
 import com.qxm.poetry.service.PoetryAuthorService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
 /**
- * Title: {@link PoetryAuthor}
+ * Title: {@link PoetryAuthorServiceImpl}
  * Description: 古代人物service实现
  *
  * @author 谭 tmn
@@ -29,7 +28,7 @@ public class PoetryAuthorServiceImpl extends ServiceImpl<PoetryAuthorMapper, Poe
 
     final PoetryAuthorMapper poetryAuthorMapper;
 
-    public PoetryAuthorServiceImpl(@Autowired PoetryAuthorMapper poetryAuthorMapper) {
+    public PoetryAuthorServiceImpl(PoetryAuthorMapper poetryAuthorMapper) {
         this.poetryAuthorMapper = poetryAuthorMapper;
     }
 

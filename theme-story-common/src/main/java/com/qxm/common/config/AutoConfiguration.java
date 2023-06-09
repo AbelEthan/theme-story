@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @Author: AbelEthan
  * @Email AbelEthan@126.com
  * @Date 2023/5/31 11:42
- * @Describes
+ * @Describes 公共bean配置类
  */
 @Configuration
 public class AutoConfiguration {
@@ -33,7 +33,8 @@ public class AutoConfiguration {
     }
 
     @Bean
-    public CustomSqlInjector sqlInjector(){
+    public CustomSqlInjector sqlInjector() {
         return new CustomSqlInjector();
     }
+
 }

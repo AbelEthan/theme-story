@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * @Author: AbelEthan
  * @Email AbelEthan@126.com
  * @Date 2023/6/1 9:43
- * @Describes
+ * @Describes 微信配置加载类
  */
 @Data
 @Configuration

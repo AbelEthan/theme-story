@@ -13,7 +13,7 @@ import java.util.List;
  * @Author: AbelEthan
  * @Email AbelEthan@126.com
  * @Date 2023/5/31 11:38
- * @Describes
+ * @Describes 自定义批量写入接口
  */
 public class CustomSqlInjector extends DefaultSqlInjector {
     @Override

@@ -6,7 +6,6 @@ import com.qxm.poetry.mapper.PoetryMapper;
 import com.qxm.poetry.model.entity.Poetry;
 import com.qxm.poetry.model.entity.PoetryAuthor;
 import com.qxm.poetry.service.PoetryService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,7 +23,7 @@ public class PoetryServiceImpl extends ServiceImpl<PoetryMapper, Poetry> impleme
 
     final PoetryMapper poetryMapper;
 
-    public PoetryServiceImpl(@Autowired PoetryMapper poetryMapper) {
+    public PoetryServiceImpl(PoetryMapper poetryMapper) {
         this.poetryMapper = poetryMapper;
     }
 

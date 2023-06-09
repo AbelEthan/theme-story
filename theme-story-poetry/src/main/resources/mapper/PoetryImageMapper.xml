@@ -10,26 +10,6 @@
         <result property="createTime" column="create_time"/>
         <result property="modifyTime" column="modify_time"/>
     </resultMap>
-
-    <select id="selectPoetryImagePage" resultType="com.qxm.poetry.model.vo.PoetryImageVO">
-        select
-            pi.id,
-            pi.url,
-            pi.status,
-            pi.open
-        from
-            poetry_image as pi
-        <where>
-            <if test="ew.status != null">
-                and pi.status = #{ew.status}
-            </if>
-            <if test="ew.open != null">
-                and pi.open = #{ew.open}
-            </if>
-        </where>
-        order by
-            sort
-    </select>
     <select id="selectPoetryImage" resultType="com.qxm.poetry.model.vo.PoetryImageVO">
         select
             pi.id,

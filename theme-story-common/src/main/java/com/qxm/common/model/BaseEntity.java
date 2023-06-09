@@ -16,7 +16,7 @@ import java.util.Date;
  * @Author: AbelEthan
  * @Email AbelEthan@126.com
  * @Date 2023/6/6 15:11
- * @Describes
+ * @Describes 公共基础类
  */
 @Data
 public class BaseEntity implements Serializable {

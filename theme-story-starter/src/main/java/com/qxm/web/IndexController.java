@@ -5,6 +5,7 @@ import cn.hutool.http.HttpResponse;
 import com.qxm.common.model.ApiResponse;
 import com.qxm.common.properties.WechatProperties;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @ClassName: {@link LoginController}
+ * @ClassName: {@link IndexController}
  * @Author: AbelEthan
  * @Email AbelEthan@126.com
  * @Date 2023/6/1 9:41
@@ -21,11 +22,11 @@ import java.util.Map;
  */
 @Slf4j
 @RestController
-public class LoginController {
+public class IndexController {
 
     final private WechatProperties properties;
 
-    public LoginController(WechatProperties properties) {
+    public IndexController(@Autowired WechatProperties properties) {
         this.properties = properties;
     }
 

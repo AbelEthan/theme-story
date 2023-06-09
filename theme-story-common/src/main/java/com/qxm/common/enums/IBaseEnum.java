@@ -72,6 +72,26 @@ public interface IBaseEnum {
     }
 
     /**
+     * 根据ｋｅｙ获取枚举
+     *
+     * @param key
+     * @param clazz
+     * @param <E>
+     * @return
+     */
+    static <E extends Enum<E> & IBaseEnum> String coverEnumValue(Object key, Class<?> clazz) {
+        if (ObjectUtil.isEmpty(key)) {
+            return null;
+        }
+        EnumSet<E> all = EnumSet.allOf((Class<E>) clazz);
+        E anElse = all.stream()
+                .filter(e -> e.getKey().equals(key))
+                .findFirst()
+                .orElse(null);
+        return anElse == null ? null : anElse.getValue();
+    }
+
+    /**
      * 根据value获取枚举
      *
      * @param value

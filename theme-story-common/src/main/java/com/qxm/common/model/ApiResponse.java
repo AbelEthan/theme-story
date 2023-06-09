@@ -2,6 +2,13 @@ package com.qxm.common.model;
 
 import lombok.Data;
 
+/**
+ * @ClassName: {@link ApiResponse}
+ * @Author: AbelEthan
+ * @Email AbelEthan@126.com
+ * @Date 2023/5/31 17:30
+ * @Describes 统一返回对象
+ */
 @Data
 public final class ApiResponse {
 
