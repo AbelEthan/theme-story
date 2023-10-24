@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qxm.poetry.mapper.PoetryWorkTextbookMapper">
+
+    <resultMap id="authorMapper" type="com.qxm.poetry.model.entity.PoetryWorkTextbook">
+        <id property="workId" column="work_id"/>
+        <id property="textbookId" column="textbook_id"/>
+        <result property="createTime" column="work_id"/>
+    </resultMap>
+
+</mapper>

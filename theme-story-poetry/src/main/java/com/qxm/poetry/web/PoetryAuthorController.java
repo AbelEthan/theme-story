@@ -1,6 +1,12 @@
 package com.qxm.poetry.web;
 
+import cn.hutool.core.collection.CollectionUtil;
+import com.ejlchina.searcher.BeanSearcher;
+import com.ejlchina.searcher.SearchResult;
+import com.qxm.common.enums.IBaseEnum;
+import com.qxm.common.enums.StatusEnum;
 import com.qxm.common.model.ApiResponse;
+import com.qxm.poetry.model.vo.PoetryAuthorVO;
 import com.qxm.poetry.service.PoetryAuthorService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,19 +31,27 @@ import java.util.Map;
 public class PoetryAuthorController {
 
     final PoetryAuthorService poetryAuthorService;
+    final BeanSearcher beanSearcher;
 
-    public PoetryAuthorController(PoetryAuthorService poetryAuthorService) {
+    public PoetryAuthorController(BeanSearcher beanSearcher, PoetryAuthorService poetryAuthorService) {
+        this.beanSearcher = beanSearcher;
         this.poetryAuthorService = poetryAuthorService;
     }
 
     /**
-     * 分页获取人物信息
+     * 获取人物信息列表
      *
      * @return API response json
      */
-    @GetMapping("/page")
+    @GetMapping()
     ApiResponse getPage(@RequestParam(required = false) Map map) {
-        return ApiResponse.ok(poetryAuthorService.findPage(map));
+        SearchResult<PoetryAuthorVO> search = beanSearcher.search(PoetryAuthorVO.class, map);
+        if (CollectionUtil.isNotEmpty(search.getDataList())) {
+            search.getDataList().stream().forEach(vo -> {
+                vo.setStatusValue(IBaseEnum.getEnumValue(vo.getStatus(), StatusEnum.class));
+            });
+        }
+        return ApiResponse.ok(search);
     }
 
 

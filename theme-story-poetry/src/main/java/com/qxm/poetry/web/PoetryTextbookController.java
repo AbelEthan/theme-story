@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Title: {@link PoetryTextbookController}
@@ -40,7 +43,7 @@ public class PoetryTextbookController {
     }
 
     /**
-     * 获取图片信息列表
+     * 获取书本信息列表
      *
      * @return API response json
      */
@@ -57,11 +60,30 @@ public class PoetryTextbookController {
     }
 
     /**
-     * 获取图片信息列表
+     * 获取书本信息列表
      *
      * @return API response json
      */
-    @GetMapping("/{id}")
+    @GetMapping("/group")
+    ApiResponse getGroupMap() {
+        List<PoetryTextbookVO> list = beanSearcher.searchAll(PoetryTextbookVO.class, null);
+        if (CollectionUtil.isNotEmpty(list)) {
+            list.stream().forEach(vo -> {
+                vo.setTypeValue(IBaseEnum.getEnumValue(vo.getType(), TextbookTypeEnum.class));
+                vo.setStatusValue(IBaseEnum.getEnumValue(vo.getStatus(), StatusEnum.class));
+            });
+            Map<Integer, List<PoetryTextbookVO>> hashMap = list.stream().collect(Collectors.groupingBy(PoetryTextbookVO::getType, LinkedHashMap::new, Collectors.toList()));
+            return ApiResponse.ok(hashMap);
+        }
+        return ApiResponse.ok();
+    }
+
+    /**
+     * 获取书本信息列表
+     *
+     * @return API response json
+     */
+    @GetMapping("/id/{id}")
     ApiResponse get(@PathVariable("id") Long id) {
         return ApiResponse.ok(poetryTextbookService.findVO(id));
     }

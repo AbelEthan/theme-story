@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qxm.poetry.mapper.PoetryWorkMapper">
+
+    <resultMap id="authorMapper" type="com.qxm.poetry.model.entity.PoetryWork">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="authorId" column="author_id"/>
+        <result property="author" column="author"/>
+        <result property="dynastyId" column="dynasty_id"/>
+        <result property="dynasty" column="dynasty"/>
+        <result property="kind" column="kind"/>
+        <result property="kindCn" column="kind_cn"/>
+        <result property="baiduWiki" column="baidu_wiki"/>
+        <result property="content" column="content"/>
+        <result property="intro" column="intro"/>
+        <result property="annotation" column="annotation"/>
+        <result property="translation" column="translation"/>
+        <result property="masterComment" column="master_comment"/>
+        <result property="quote" column="quote"/>
+        <result property="status" column="status"/>
+        <result property="sort" column="sort"/>
+        <result property="createTime" column="create_time"/>
+        <result property="modifyTime" column="modify_time"/>
+    </resultMap>
+
+</mapper>
